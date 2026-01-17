@@ -1,0 +1,826 @@
+index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kanha Hotels - Comfortable stays across the city with five trusted hotels offering clean rooms, fair pricing, and easy booking.">
+    <title>Kanha Hotels - Comfortable Stays Across the City</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#B45309',
+                        secondary: '#D97706',
+                        warm: '#FEF3C7',
+                        warmDark: '#FDE68A',
+                        accent: '#92400E',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, #FCD34D 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.9) 0%, rgba(217, 119, 6, 0.85) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(180, 83, 9, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(180, 83, 9, 0.3);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .service-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary">
+                            <i class="fas fa-hotel mr-2"></i>Kanha Hotels
+                        </h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#hotels" class="text-gray-700 hover:text-primary transition-colors px-3 py-2">Our Hotels</a>
+                    <a href="#services" class="text-gray-700 hover:text-primary transition-colors px-3 py-2">Services</a>
+                    <a href="#why-us" class="text-gray-700 hover:text-primary transition-colors px-3 py-2">Why Us</a>
+                    <a href="tel:+919876543210" class="btn-primary text-white px-4 py-2 rounded-full text-sm font-medium">
+                        <i class="fas fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#hotels" class="block text-gray-700 hover:text-primary py-2">Our Hotels</a>
+                <a href="#services" class="block text-gray-700 hover:text-primary py-2">Services</a>
+                <a href="#why-us" class="block text-gray-700 hover:text-primary py-2">Why Us</a>
+                <a href="tel:+919876543210" class="block btn-primary text-white px-4 py-2 rounded-full text-sm font-medium text-center">
+                    <i class="fas fa-phone mr-2"></i>Call Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-16">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-100 via-orange-50 to-yellow-100"></div>
+            <div class="absolute inset-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <circle cx="10" cy="10" r="1" fill="#B45309"/>
+                    </pattern>
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern)"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left fade-in">
+                    <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <i class="fas fa-star mr-2"></i>Trusted by 10,000+ Guests
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Comfortable Stays Across the City
+                        <span class="text-primary block mt-2">Kanha Hotels</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                        Five trusted hotels offering clean rooms, fair pricing, and easy booking. Your comfort is our priority.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20book%20a%20room" 
+                           target="_blank"
+                           class="btn-whatsapp text-white px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-3 text-2xl"></i>Book on WhatsApp
+                        </a>
+                        <a href="tel:+919876543210" 
+                           class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center">
+                            <i class="fas fa-phone mr-3"></i>Call for Instant Booking
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start gap-8 mt-10">
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-primary">5</p>
+                            <p class="text-sm text-gray-600">Hotels</p>
+                        </div>
+                        <div class="w-px h-12 bg-gray-300"></div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-primary">₹1000+</p>
+                            <p class="text-sm text-gray-600">Per Night</p>
+                        </div>
+                        <div class="w-px h-12 bg-gray-300"></div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-primary">24/7</p>
+                            <p class="text-sm text-gray-600">Support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:block fade-in delay-2">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-secondary/20 rounded-full blur-3xl"></div>
+                        <div class="relative bg-white rounded-3xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                                        <i class="fas fa-bed text-white text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-900">Deluxe Room</h3>
+                                        <p class="text-primary font-bold">₹1,200/night</p>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2 text-gray-600">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Free Wi-Fi</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-gray-600">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>AC Room</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-gray-600">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Attached Bathroom</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#hotels" class="text-primary">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Hotels Section -->
+    <section id="hotels" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                    Our Properties
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Choose Your Perfect Stay
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Five convenient locations, one trusted brand. All our hotels offer consistent quality and comfort.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Hotel Card 1 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gradient-to-br from-amber-400 to-orange-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-hotel text-white/30 text-8xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                            <span class="text-primary font-semibold text-sm">₹1000 - ₹1200</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kanha INN</h3>
+                        <p class="text-gray-600 mb-4">Cozy comfort for budget-conscious travellers in the heart of the city.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Standard</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Deluxe</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-lg text-center font-medium transition-colors">
+                                View Details
+                            </a>
+                            <a href="tel:+919876543210" class="flex-1 btn-primary text-white py-2 rounded-lg text-center font-medium">
+                                <i class="fas fa-phone mr-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 2 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-400 to-amber-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-hotel text-white/30 text-8xl"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full">
+                            <span class="font-semibold text-sm">Popular</span>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                            <span class="text-primary font-semibold text-sm">₹1000 - ₹1200</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kanha Gold</h3>
+                        <p class="text-gray-600 mb-4">Premium amenities at affordable prices for family and business stays.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Standard</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Deluxe</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-lg text-center font-medium transition-colors">
+                                View Details
+                            </a>
+                            <a href="tel:+919876543210" class="flex-1 btn-primary text-white py-2 rounded-lg text-center font-medium">
+                                <i class="fas fa-phone mr-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 3 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gradient-to-br from-orange-400 to-red-400">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-hotel text-white/30 text-8xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                            <span class="text-primary font-semibold text-sm">₹1000 - ₹1200</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kanha O Stay</h3>
+                        <p class="text-gray-600 mb-4">Modern comfort with easy access to major business hubs and transport.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Standard</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Deluxe</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-lg text-center font-medium transition-colors">
+                                View Details
+                            </a>
+                            <a href="tel:+919876543210" class="flex-1 btn-primary text-white py-2 rounded-lg text-center font-medium">
+                                <i class="fas fa-phone mr-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 4 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gradient-to-br from-amber-300 to-yellow-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-hotel text-white/30 text-8xl"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                            <span class="text-primary font-semibold text-sm">₹1000 - ₹1200</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Hotel Balaji Inn</h3>
+                        <p class="text-gray-600 mb-4">Traditional hospitality with modern amenities for a homely experience.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Standard</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Deluxe</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-lg text-center font-medium transition-colors">
+                                View Details
+                            </a>
+                            <a href="tel:+919876543210" class="flex-1 btn-primary text-white py-2 rounded-lg text-center font-medium">
+                                <i class="fas fa-phone mr-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 5 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gradient-to-br from-orange-500 to-amber-600">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-hotel text-white/30 text-8xl"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full">
+                            <span class="font-semibold text-sm">New</span>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                            <span class="text-primary font-semibold text-sm">₹1000 - ₹1200</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">CRIB INN</h3>
+                        <p class="text-gray-600 mb-4">Fresh and trendy stays designed for young travellers and couples.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Standard</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Deluxe</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-lg text-center font-medium transition-colors">
+                                View Details
+                            </a>
+                            <a href="tel:+919876543210" class="flex-1 btn-primary text-white py-2 rounded-lg text-center font-medium">
+                                <i class="fas fa-phone mr-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Hotels Card -->
+                <div class="card-hover bg-gradient-to-br from-primary to-secondary rounded-2xl shadow-lg overflow-hidden flex items-center justify-center min-h-[320px]">
+                    <div class="text-center text-white p-8">
+                        <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-arrow-right text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Explore All Hotels</h3>
+                        <p class="text-white/80 mb-6">Find the perfect stay for your needs</p>
+                        <a href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20know%20more%20about%20your%20hotels" 
+                           target="_blank"
+                           class="inline-block bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                    What We Offer
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Services at Every Hotel
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Consistent quality and comfort across all our properties. Here's what you can expect.
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                    <div class="service-icon w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-broom text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Clean & Hygienic</h3>
+                    <p class="text-sm text-gray-600">Spotless rooms with fresh linens daily</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                    <div class="service-icon w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4" style="animation-delay: 0.2s;">
+                        <i class="fas fa-wifi text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Free Wi-Fi</h3>
+                    <p class="text-sm text-gray-600">High-speed internet in all rooms</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                    <div class="service-icon w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4" style="animation-delay: 0.4s;">
+                        <i class="fas fa-clock text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">24×7 Support</h3>
+                    <p class="text-sm text-gray-600">Round-the-clock check-in assistance</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                    <div class="service-icon w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4" style="animation-delay: 0.6s;">
+                        <i class="fas fa-users text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Family Friendly</h3>
+                    <p class="text-sm text-gray-600">Safe & welcoming for all families</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                    <div class="service-icon w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4" style="animation-delay: 0.8s;">
+                        <i class="fas fa-rupee-sign text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Budget Friendly</h3>
+                    <p class="text-sm text-gray-600">Fair pricing with no hidden costs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                        Why Kanha Hotels
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                        Your Trust, Our Priority
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        We've built our reputation on honest service and consistent quality. Here's why thousands of guests choose us.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- Point 1 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg mb-1">Multiple Locations, One Brand</h3>
+                                <p class="text-gray-600">Five hotels across the city, all maintaining the same standard of comfort and cleanliness.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 2 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-tag text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg mb-1">Transparent Pricing</h3>
+                                <p class="text-gray-600">What you see is what you pay. No hidden charges, no surprises at checkout.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 3 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-whatsapp text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg mb-1">Easy WhatsApp & Call Booking</h3>
+                                <p class="text-gray-600">No apps to download, no lengthy forms. Just message or call us for instant confirmation.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 4 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-briefcase text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg mb-1">Perfect for Families & Business</h3>
+                                <p class="text-gray-600">Whether you're travelling with family or on business, our hotels cater to all your needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute -top-8 -right-8 w-64 h-64 bg-amber-200 rounded-full blur-3xl opacity-40"></div>
+                    <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-orange-200 rounded-full blur-3xl opacity-40"></div>
+                    
+                    <div class="relative grid grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 text-white">
+                            <div class="text-4xl font-bold mb-2">10K+</div>
+                            <div class="text-white/80">Happy Guests</div>
+                        </div>
+                        <div class="bg-white shadow-xl rounded-2xl p-6 border border-gray-100">
+                            <div class="text-4xl font-bold text-primary mb-2">5</div>
+                            <div class="text-gray-600">Hotel Locations</div>
+                        </div>
+                        <div class="bg-white shadow-xl rounded-2xl p-6 border border-gray-100">
+                            <div class="text-4xl font-bold text-primary mb-2">4.5★</div>
+                            <div class="text-gray-600">Average Rating</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white">
+                            <div class="text-4xl font-bold mb-2">24/7</div>
+                            <div class="text-white/80">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-amber-500"></div>
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <pattern id="pattern2" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+                    <circle cx="15" cy="15" r="2" fill="white"/>
+                </pattern>
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern2)"/>
+            </svg>
+        </div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 sm:p-12">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-8">
+                    <i class="fas fa-calendar-check text-white text-3xl"></i>
+                </div>
+                
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+                    Book Your Stay in 2 Minutes
+                </h2>
+                <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+                    No apps, no confusion. Just call or WhatsApp us for instant confirmation. Your comfortable stay is just a message away.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20book%20a%20room" 
+                       target="_blank"
+                       class="btn-whatsapp text-white px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center shadow-lg">
+                        <i class="fab fa-whatsapp mr-3 text-2xl"></i>WhatsApp Booking
+                    </a>
+                    <a href="tel:+919876543210" 
+                       class="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center hover:bg-gray-100 transition-colors shadow-lg">
+                        <i class="fas fa-phone mr-3"></i>Call Now
+                    </a>
+                </div>
+                
+                <p class="text-white/70 mt-8 text-sm">
+                    <i class="fas fa-shield-alt mr-2"></i>100% Secure Booking • Instant Confirmation
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                    Guest Reviews
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    What Our Guests Say
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Clean rooms, helpful staff, and great value for money. Exactly what we needed for our family trip. Will definitely come back!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold">RS</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Rajesh Sharma</p>
+                            <p class="text-sm text-gray-500">Family Traveller</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">"I travel for business often and Kanha Hotels has become my go-to choice. Easy booking, comfortable beds, and good Wi-Fi."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold">PK</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Priya Kumar</p>
+                            <p class="text-sm text-gray-500">Business Traveller</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">"No fancy claims, just honest service. The room was clean, the price was right, and the staff was polite. That's all I need."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold">AM</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Amit Mehta</p>
+                            <p class="text-sm text-gray-500">Budget Traveller</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Brand Info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <i class="fas fa-hotel mr-2 text-primary"></i>Kanha Hotels
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        Five trusted hotels across the city offering clean rooms, fair pricing, and easy booking. Your comfort is our commitment.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#hotels" class="text-gray-400 hover:text-white transition-colors">Our Hotels</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#why-us" class="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Book Now</h4>
+                    <div class="space-y-4">
+                        <a href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20book%20a%20room" 
+                           target="_blank"
+                           class="btn-whatsapp text-white px-6 py-3 rounded-full font-medium inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i>WhatsApp Us
+                        </a>
+                        <br>
+                        <a href="tel:+919876543210" 
+                           class="btn-primary text-white px-6 py-3 rounded-full font-medium inline-flex items-center">
+                            <i class="fas fa-phone mr-2"></i>+91 98765 43210
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm text-center md:text-left">
+                        © 2024 Kanha Hotels. All rights reserved.
+                    </p>
+                    <p class="text-gray-500 text-xs text-center md:text-right">
+                        Prices are subject to availability and may vary based on season and demand. Terms & conditions apply.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20book%20a%20room" 
+       target="_blank"
+       class="fixed bottom-6 right-6 w-16 h-16 btn-whatsapp rounded-full flex items-center justify-center shadow-2xl z-50 animate-pulse hover:animate-none">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
+```
